@@ -127,42 +127,6 @@ body {
   font-size: 1rem;
 }
 
-.table-container {
-  overflow-x: auto;
-  margin-bottom: 25px;
-}
-
-.array-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 400px;
-}
-
-.array-table thead {
-  background-color: #f8f9fa;
-}
-
-.array-table th {
-  padding: 15px;
-  text-align: left;
-  font-weight: 600;
-  color: #444;
-  border-bottom: 2px solid #dee2e6;
-}
-
-.array-table td {
-  padding: 12px 15px;
-  border-bottom: 1px solid #eee;
-}
-
-.array-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.array-table tbody tr:hover {
-  background-color: #f1f8ff;
-}
-
 .array-raw {
   margin-top: 25px;
   padding: 20px;
@@ -187,38 +151,4 @@ body {
   font-size: 0.95rem;
   overflow-x: auto;
   white-space: nowrap;
-}
-
-.App-footer {
-  background-color: #282c34;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 30px;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-  .App-header h1 {
-    font-size: 2rem;
-  }
-  
-  .main-content {
-    padding: 20px;
-  }
-  
-  .controls-container {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-  
-  .array-info {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .array-table th,
-  .array-table td {
-    padding: 10px;
-  }
 }

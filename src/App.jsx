@@ -7,7 +7,28 @@ function App() {
   const [maxValue, setMaxValue] = useState(100);
   const [arraySize, setArraySize] = useState(10);
   const [generatedArray, setGeneratedArray] = useState([]);
+  const [sortedGeneratedArray, setSortedGeneratedArray] = useState([])
   const [isArrayGenerated, setIsArrayGenerated] = useState(false);
+
+  function quickSort(arr) {
+    if (arr.length < 2) {
+      return arr;
+    }
+
+    const pivot = arr[arr.length - 1];
+    const left = [];
+    const right = [];
+
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] < pivot) {
+        left.push(arr[i]);
+      } else {
+        right.push(arr[i]);
+      }
+    }
+    
+    return [...quickSort(left), pivot, ...quickSort(right)];
+  }
 
   // Функция для генерации массива случайных чисел
   const generateArray = () => {
@@ -28,6 +49,7 @@ function App() {
       newArray.push(randomNum);
     }
 
+    setSortedGeneratedArray(quickSort(newArray))
     setGeneratedArray(newArray);
     setIsArrayGenerated(true);
   };
@@ -101,35 +123,17 @@ function App() {
               <p>Диапазон: от {minValue} до {maxValue}</p>
               <p>Размер массива: {arraySize} элементов</p>
             </div>
-            <div className="table-container">
-              <table className="array-table">
-                <thead>
-                  <tr>
-                    <th>Индекс</th>
-                    <th>Значение</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {generatedArray.map((value, index) => (
-                    <tr key={index}>
-                      <td>{index}</td>
-                      <td>{value}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="array-raw">
+              <p>Изначальный массив:</p>
+              <code>[{generatedArray.join(', ')}]</code>
             </div>
             <div className="array-raw">
-              <p>Массив в строковом формате:</p>
-              <code>[{generatedArray.join(', ')}]</code>
+              <p>Отсортированный массив:</p>
+              <code>[{sortedGeneratedArray.join(', ')}]</code>
             </div>
           </div>
         )}
       </main>
-
-      <footer className="App-footer">
-        <p>React Array Generator &copy; 2023</p>
-      </footer>
     </div>
   );
 }
